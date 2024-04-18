@@ -25,7 +25,7 @@ def get_cities(state_id=None):
             return abort(400, description="Not a JSON")
         if "name" not in data:
             return abort(400, description="Missing name")
-        new_city = City(name=data["name"], state_id=state_id)
+        new_city = City(**data)
         storage.new(new_city)
         storage.save()
         return jsonify(new_city.to_dict()), 201
