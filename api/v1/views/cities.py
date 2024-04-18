@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-'''
-    RESTful API actions for City object
-'''
+    """RESTful API actions for City object"""
 from flask import jsonify, abort, request
 from api.v1.views import app_views
 from models import storage
