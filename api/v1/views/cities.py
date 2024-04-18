@@ -18,6 +18,8 @@ def get_cities(state_id=None):
         cities = []
         for city in state.cities:
             cities.append(city.to_dict())
+        if len(cities) == 0:
+            return jsonify({})
         return jsonify(cities)
     if request.method == 'POST':
         data = request.get_json(silent=True, force=True)
