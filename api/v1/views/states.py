@@ -26,15 +26,14 @@ def return_states(state_id=None):
         state = storage.get(State, state_id)
         if state is None:
             return abort(404)
-        state_dict = state.to_dict()    
         data = request.get_json(force=True)
         if not data:
             return abort(400, description="Not a JSON")
         for key, value in data.items():
             if key not in ['id', 'updated_at', 'created_at']:
-                state_dict[key] = data[key]
+                setattr(state, key, value)
         storage.save()
-        return jsonify(state_dict)
+        return jsonify(state.to_dict())
     if request.method == 'DELETE':
         if state_id is None:
             return abort(404)
