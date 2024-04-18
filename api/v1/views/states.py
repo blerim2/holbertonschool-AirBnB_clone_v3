@@ -24,9 +24,9 @@ def return_states(state_id=None):
         return jsonify(state.to_dict())
     if request.method == 'PUT':
         state = storage.get(State, state_id)
-        state_dict = state.to_dict()
         if state is None:
             return abort(404)
+        state_dict = state.to_dict()    
         data = request.get_json(force=True)
         if not data:
             return abort(400, description="Not a JSON")
