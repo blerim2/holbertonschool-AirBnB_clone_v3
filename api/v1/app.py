@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""App"""
+"""App to perform actions"""
 
 from api.v1.views import app_views
 from flask import Flask
