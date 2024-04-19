@@ -3,8 +3,6 @@
 Module to create the routes
 for our api
 '''
-
-
 from api.v1.views import app_views
 from flask import jsonify
 from models import storage
